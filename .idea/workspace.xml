@@ -1,13 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="f29c8301-3a2d-4154-9b78-511809f8d7cb" name="Default Changelist" comment="" />
+    <list default="true" id="f29c8301-3a2d-4154-9b78-511809f8d7cb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Atracao.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Atracao.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Bolsista.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Bolsista.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Endereco.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Endereco.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Escola.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Escola.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Funcionario.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Funcionario.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Horario.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Horario.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Permissao.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Permissao.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Pessoa.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Pessoa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Visita.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Visita.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1gapmXvI08ZlSQtS5Cgt36fr0NL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -27,10 +61,25 @@
       <option name="presentableId" value="Default" />
       <updated>1598362716241</updated>
       <workItem from="1598362717288" duration="2519000" />
+      <workItem from="1598365904033" duration="598000" />
+      <workItem from="1598394868598" duration="1285000" />
+      <workItem from="1598442385097" duration="1745000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
