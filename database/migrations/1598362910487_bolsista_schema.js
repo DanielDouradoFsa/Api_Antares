@@ -7,8 +7,6 @@ class BolsistaSchema extends Schema {
   up () {
     this.create('bolsistas', (table) => {
       table.increments('id');
-      table.integer('matricula').notNullable();
-      table.boolean('ativo').notNullable();
 
       table.integer('pessoa_id').unsigned()
         .references('id')
@@ -16,9 +14,9 @@ class BolsistaSchema extends Schema {
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
 
-      table.integer('usuario_id').unsigned()
+      table.integer('user_id').unsigned()
         .references('id')
-        .inTable('usuarios')
+        .inTable('users')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
 
@@ -27,6 +25,9 @@ class BolsistaSchema extends Schema {
         .inTable('permissoes')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
+
+      table.integer('matricula').notNullable();
+      table.boolean('ativo').notNullable();
     })
   }
 

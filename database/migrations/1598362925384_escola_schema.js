@@ -7,16 +7,9 @@ class EscolaSchema extends Schema {
   up () {
     this.create('escolas', (table) => {
       table.increments('id');
-      table.string('nome', 255).notNullable();
-      table.integer('telefone').notNullable();
-      table.string('nome_responsavel', 255).notNullable();
-      table.integer('telefone_responsavel').notNullable();
-      table.string('email', 255).notNullable();
-      table.string('tipo', 20).notNullable();
-
-      table.integer('usuario_id').unsigned()
+      table.integer('user_id').unsigned()
         .references('id')
-        .inTable('usuarios')
+        .inTable('users')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
 
@@ -25,6 +18,12 @@ class EscolaSchema extends Schema {
         .inTable('enderecos')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
+      table.string('nome', 255).notNullable();
+      table.integer('telefone').notNullable();
+      table.string('nome_responsavel', 255).notNullable();
+      table.integer('telefone_responsavel').notNullable();
+      table.string('email', 255).notNullable();
+      table.string('tipo', 20).notNullable();
     })
   }
 

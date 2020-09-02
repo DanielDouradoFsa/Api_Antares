@@ -7,14 +7,23 @@ class PermissaoSchema extends Schema {
   up () {
     this.create('permissoes', (table) => {
       table.increments('id');
-      table.boolean('gerir_bolsita').defaultTo(0).notNullable();
-      table.boolean('gerir_funcionario').defaultTo(0).notNullable();
-      table.boolean('validar_agendamento').defaultTo(0).notNullable();
-      table.boolean('gerar_relatorio').defaultTo(0).notNullable();
-      table.boolean('inserir_atividade').defaultTo(0).notNullable();
-      table.boolean('gerir_horario_bolsista').defaultTo(0).notNullable();
-      table.boolean('gerir_backup').defaultTo(0).notNullable();
-      table.boolean('ver_escolas').defaultTo(0).notNullable();
+      table.integer('user_id').unsigned()
+        .references('id')
+        .inTable('users')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
+      table.boolean('gerir_bolsita').defaultTo(false);
+      table.boolean('gerir_funcionario').defaultTo(false);
+      table.boolean('agendamento').defaultTo(false);
+      table.boolean('relatorio').defaultTo(false);
+      table.boolean('cadastrar_atividade').defaultTo(false);
+      table.boolean('gerir_horario_bolsista').defaultTo(false);
+      table.boolean('gerir_backup').defaultTo(false);
+      table.boolean('ver_escolas').defaultTo(false);
+      table.boolean('meu_horario').defaultTo(false);
+      table.boolean('agendar_visita').defaultTo(false);
+      table.boolean('meus_agendamentos').defaultTo(false);
+      table.boolean('editar_dados').defaultTo(false);
     })
   }
 

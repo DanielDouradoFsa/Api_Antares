@@ -5,8 +5,8 @@ const Model = use('Model')
 
 class Permissao extends Model {
 
-  funcionario() {
-    return this.belongsTo('App/Models/Funcionario')
+  usuario() {
+    return this.belongsTo('App/Models/User')
   }
 }
 

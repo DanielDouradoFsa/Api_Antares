@@ -12,10 +12,6 @@ class Funcionario extends Model {
   usuario() {
     return this.hasOne('App/Models/User')
   }
-
-  permissao() {
-    return this.hasOne('App/Models/Permissao')
-  }
 }
 
 module.exports = Funcionario

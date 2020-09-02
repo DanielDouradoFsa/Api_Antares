@@ -21,21 +21,36 @@
   <component name="ChangeListManager">
     <list default="true" id="f29c8301-3a2d-4154-9b78-511809f8d7cb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Atracao.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Atracao.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Bolsista.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Bolsista.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Endereco.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Endereco.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Escola.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Escola.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Funcionario.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Funcionario.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Horario.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Horario.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Permissao.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Permissao.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Pessoa.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Pessoa.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Visita.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Visita.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1503250034279_user.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1503250034279_user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1503250034280_token.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1503250034280_token.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1598362844958_permissao_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362844958_permissao_schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1598362874739_pessoa_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362874739_pessoa_schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1598362890099_atracao_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362890099_atracao_schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1598362903173_visita_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362903173_visita_schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1598362910487_bolsista_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362910487_bolsista_schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1598362919578_funcionario_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362919578_funcionario_schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1598362925384_escola_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362925384_escola_schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1598362939962_relatorio_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362939962_relatorio_schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,6 +79,11 @@
       <workItem from="1598365904033" duration="598000" />
       <workItem from="1598394868598" duration="1285000" />
       <workItem from="1598442385097" duration="1745000" />
+      <workItem from="1598574208495" duration="686000" />
+      <workItem from="1598902207471" duration="9443000" />
+      <workItem from="1599072496315" duration="10683000" />
+      <workItem from="1599085985361" duration="65000" />
+      <workItem from="1599086113998" duration="197000" />
     </task>
     <servers />
   </component>

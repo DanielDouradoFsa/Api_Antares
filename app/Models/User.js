@@ -7,6 +7,11 @@ const Model = use('Model')
 const Hash = use('Hash')
 
 class User extends Model {
+
+  static get hidden () {
+    return ['password', 'id']
+  }
+
   static boot () {
     super.boot()
 
@@ -45,6 +50,10 @@ class User extends Model {
 
   bolsista() {
     return this.belongsTo('App/Models/Bolsista')
+  }
+
+  permissao() {
+    return this.hasOne('App/Models/Permissao')
   }
 }
 
