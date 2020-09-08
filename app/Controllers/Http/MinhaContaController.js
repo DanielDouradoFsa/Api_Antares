@@ -4,8 +4,10 @@ const { validateAll } = use('Validator')
 
 class MinhaContaController {
 
-  async show ({ params, response, auth }) {
+  async show ({ response, auth }) {
     try{
+      await auth.check()
+
       const user = await auth.getUser()
 
       if(user == null)

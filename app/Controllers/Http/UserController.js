@@ -5,6 +5,52 @@ const { validateAll } = use('Validator')
 
 class UserController {
 
+  async login ({ request, response, auth }) {
+
+    try{
+      const erroMessage = {
+        'username.required': 'Esse campo é obrigatorio',
+        'username.min': 'O campo deve ter no mínimo 5 caracteres',
+        'password.required': 'Esse campo é obrigatorio',
+        'password.min': 'O campo deve ter no mínimo 6 caracteres',
+      }
+
+      const validation = await validateAll(request.all(), {
+        username: 'required|min:5',
+        password: 'required|min:6'
+      }, erroMessage)
+
+      if(validation.fails()){
+        return response.status(400).send({
+          message: validation.messages()
+        })
+      }
+
+      const { username, password } = request.only(['username', 'password'])
+      const validaToken = await auth.attempt(username, password)
+
+      return response.status(200).send(validaToken)
+
+    }catch (err){
+      return response.status(500).send({
+        error: `Erro: ${err.message}`
+      })
+    }
+
+  }
+
+  async logout({ response, auth }) {
+    try {
+      await auth.logout()
+
+      return response.status(200).send({
+        message: 'Usuário desconectado'
+      })
+    } catch (error) {
+      response.status(404).send('You are not logged in')
+    }
+  }
+
   async index ({ response }) {
     try{
       const users = await User.all()
@@ -22,15 +68,15 @@ class UserController {
 
     try{
       const erroMessage = {
-        'email.required': 'Esse campo é obrigatorio',
-        'email.unique': 'Esse email já existe',
-        'email.email': 'O campo deve estar em um formato de email',
+        'username.required': 'Esse campo é obrigatorio',
+        'username.unique': 'Esse usuário já existe',
+        'username.min': 'O campo deve ter no mínimo 5 caracteres',
         'password.required': 'Esse campo é obrigatorio',
-        'password.min': 'A senha deve ter mais que 5 caracteres',
+        'password.min': 'O campo deve ter no mínimo 6 caracteres',
       }
 
       const validation = await validateAll(request.all(), {
-        email: 'required|email|unique:users',
+        username: 'required|min:5|unique:users',
         password: 'required|min:6'
       }, erroMessage)
 
@@ -41,7 +87,7 @@ class UserController {
       }
 
       const data = request.only([
-        "email",
+        "username",
         "password"
       ])
 
@@ -77,13 +123,13 @@ class UserController {
   async update ({ params, request, response }) {
     try{
       const erroMessage = {
-        'email.unique': 'Esse email já existe',
-        'email.email': 'O campo deve estar em um formato de email',
-        'password.min': 'A senha deve ter mais que 5 caracteres',
+        'username.unique': 'Esse usuário já existe',
+        'username.min': 'O campo deve ter no mínimo 5 caracteres',
+        'password.min': 'O campo deve ter no mínimo 6 caracteres',
       }
 
       const validation = await validateAll(request.all(), {
-        email: 'email|unique:users',
+        username: 'min:5|unique:users',
         password: 'min:6'
       }, erroMessage)
 
@@ -98,15 +144,15 @@ class UserController {
       if(user == null)
         return response.status(404).send({message: 'Usuário não localizado'})
 
-      const { email, password } = request.only([
-        "email",
+      const { username, password } = request.only([
+        "username",
         "password"
       ])
 
       if( password != null )
         user.password = password
-      if( email != null )
-        user.email = email
+      if( username != null )
+        user.username = username
 
       await user.save()
 

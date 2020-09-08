@@ -16,10 +16,12 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.post('/login', 'LoginController.login').middleware('guest')
-Route.get('/logout', 'LoginController.logout').middleware('auth')
+Route.post('/login', 'UserController.login').middleware('guest')
+Route.get('/logout', 'UserController.logout').middleware('auth')
 
-Route.get('/conta/usuario', 'MinhaContaController.show').middleware('auth')
-Route.patch('/conta/usuario', 'MinhaContaController.update').middleware('auth')
+// Acesso dos dados pessoais pelo usuário
+Route.get('/usuario/conta', 'MinhaContaController.show').middleware('auth')
+Route.patch('/usuario/conta', 'MinhaContaController.update').middleware('auth')
 
+// Acesso aos usuarios gerais
 Route.resource('/usuarios', 'UserController').apiOnly()
