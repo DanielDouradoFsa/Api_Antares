@@ -53,7 +53,7 @@ class UserController {
 
   async index ({ response }) {
     try{
-      const users = await User.all()
+      const users = await User.findBy('ativo', 1)
 
       return response.status(200).json(users)
 
@@ -120,17 +120,22 @@ class UserController {
     }
   }
 
-  async update ({ params, request, response }) {
+  async update ({ params, request, response, auth }) {
     try{
+
+      const user = await auth.getUser()
+
       const erroMessage = {
         'username.unique': 'Esse usuário já existe',
         'username.min': 'O campo deve ter no mínimo 5 caracteres',
         'password.min': 'O campo deve ter no mínimo 6 caracteres',
+        'ativo.boolean': 'O campo é do tipo boolean',
       }
 
       const validation = await validateAll(request.all(), {
-        username: 'min:5|unique:users',
-        password: 'min:6'
+        username: `min:5|unique:users,username,id,${user.id}`,
+        password: 'min:6',
+        ativo: 'boolean'
       }, erroMessage)
 
       if(validation.fails()){
@@ -139,24 +144,25 @@ class UserController {
         })
       }
 
-      const user = await User.find(params.id)
-
       if(user == null)
         return response.status(404).send({message: 'Usuário não localizado'})
 
-      const { username, password } = request.only([
+      const { username, password, ativo } = request.only([
         "username",
-        "password"
+        "password",
+        "ativo"
       ])
 
       if( password != null )
         user.password = password
       if( username != null )
         user.username = username
+      if( ativo != null )
+        user.ativo = ativo
 
       await user.save()
 
-      return response.status(200).json(user)
+      return response.status(200).send({message: 'Usuário atualizado com sucesso'})
 
     }catch (err){
       return response.status(409).send({

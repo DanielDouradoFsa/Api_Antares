@@ -45,7 +45,7 @@ class User extends Model {
   }
 
   escola() {
-    return this.belongsTo('App/Models/Escola')
+    return this.hasOne('App/Models/Escola')
   }
 
   bolsista() {

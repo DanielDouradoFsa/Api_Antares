@@ -6,11 +6,11 @@ const Model = use('Model')
 class Pessoa extends Model {
 
   bolsista() {
-    return this.belongsTo('App/Models/Bolsista')
+    return this.hasOne('App/Models/Bolsista')
   }
 
   funcionario() {
-    return this.belongsTo('App/Models/Funcionario')
+    return this.hasOne('App/Models/Funcionario')
   }
 
   endereco() {
