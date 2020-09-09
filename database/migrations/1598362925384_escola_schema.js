@@ -24,6 +24,7 @@ class EscolaSchema extends Schema {
       table.integer('telefone_responsavel').notNullable();
       table.string('email', 255).notNullable();
       table.string('tipo', 20).notNullable();
+      table.timestamps();
     })
   }
 

@@ -19,6 +19,7 @@ class FuncionarioSchema extends Schema {
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
       table.boolean('ativo').notNullable();
+      table.timestamps();
     })
   }
 

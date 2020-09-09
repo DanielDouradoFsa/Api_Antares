@@ -16,6 +16,7 @@ class AtracaoSchema extends Schema {
       table.date('dia_inicio').notNullable();
       table.date('dia_fim').notNullable();
       table.boolean('ativo').notNullable();
+      table.timestamps();
     })
   }
 

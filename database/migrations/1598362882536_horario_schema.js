@@ -10,6 +10,7 @@ class HorarioSchema extends Schema {
       table.integer('dia', 1).notNullable();
       table.date('horario_inicio').notNullable();
       table.date('horario_fim').notNullable();
+      table.timestamps();
     })
   }
 

@@ -24,6 +24,7 @@ class PermissaoSchema extends Schema {
       table.boolean('agendar_visita').defaultTo(false);
       table.boolean('meus_agendamentos').defaultTo(false);
       table.boolean('editar_dados').defaultTo(false);
+      table.timestamps();
     })
   }
 
