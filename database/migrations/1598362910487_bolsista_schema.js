@@ -28,6 +28,7 @@ class BolsistaSchema extends Schema {
 
       table.integer('matricula').notNullable();
       table.boolean('ativo').notNullable();
+      table.timestamps();
     })
   }
 

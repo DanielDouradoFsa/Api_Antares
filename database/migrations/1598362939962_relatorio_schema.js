@@ -16,6 +16,7 @@ class RelatorioSchema extends Schema {
       table.date('dia_inicio').notNullable();
       table.date('dia_fim').notNullable();
       table.string('relatorio', 255);
+      table.timestamps();
     })
   }
 

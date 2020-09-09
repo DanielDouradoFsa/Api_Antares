@@ -12,6 +12,7 @@ class EnderecoSchema extends Schema {
       table.string('bairro', 120).notNullable();
       table.string('rua', 255).notNullable();
       table.integer('numero').notNullable();
+      table.timestamps();
     })
   }
 

@@ -17,6 +17,7 @@ class PessoaSchema extends Schema {
       table.string('cpf', 11).notNullable();
       table.string('email', 255).notNullable();
       table.integer('telefone').notNullable();
+      table.timestamps();
     })
   }
 
