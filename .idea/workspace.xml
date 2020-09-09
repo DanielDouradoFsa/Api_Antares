@@ -20,17 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f29c8301-3a2d-4154-9b78-511809f8d7cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/EscolaController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/EscolaController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/UserController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Bolsista.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Bolsista.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Endereco.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Endereco.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Escola.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Escola.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Funcionario.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Funcionario.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Pessoa.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Pessoa.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/1598362925384_escola_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362925384_escola_schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/FuncionarioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/FuncionarioController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +68,7 @@
       <workItem from="1599086113998" duration="332000" />
       <workItem from="1599161958892" duration="5622000" />
       <workItem from="1599605287454" duration="2098000" />
-      <workItem from="1599654813136" duration="18724000" />
+      <workItem from="1599654813136" duration="18906000" />
     </task>
     <servers />
   </component>
