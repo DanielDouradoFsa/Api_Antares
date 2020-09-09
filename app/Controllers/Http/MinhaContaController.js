@@ -22,7 +22,7 @@ class MinhaContaController {
     }
   }
 
-  async update ({ params, request, response, auth }) {
+  async update ({ request, response, auth }) {
     try{
       await auth.check()
 

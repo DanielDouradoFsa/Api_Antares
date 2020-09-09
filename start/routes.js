@@ -18,10 +18,19 @@ const Route = use('Route')
 
 Route.post('/login', 'UserController.login').middleware('guest')
 Route.get('/logout', 'UserController.logout').middleware('auth')
-
 // Acesso dos dados pessoais pelo usuário
 Route.get('/usuario/conta', 'MinhaContaController.show').middleware('auth')
 Route.patch('/usuario/conta', 'MinhaContaController.update').middleware('auth')
 
 // Acesso aos usuarios gerais
 Route.resource('/usuarios', 'UserController').apiOnly()
+
+// Acesso aos usuarios gerais
+Route.resource('/escolas', 'EscolaController').apiOnly().middleware('auth')
+
+// Acesso aos usuarios gerais
+Route.resource('/funcionarios', 'FuncionarioController').apiOnly().middleware('auth')
+
+// Acesso aos usuarios gerais
+Route.resource('/bolsistas', 'BolsistaController').apiOnly().middleware('auth')
+
