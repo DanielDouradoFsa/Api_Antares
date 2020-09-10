@@ -49,8 +49,8 @@ class FuncionarioController {
    * @param {Response} ctx.response
    */
   async store ({ request, response }) {
+    const trx = await Database.beginTransaction()
     try{
-      const trx = await Database.beginTransaction()
       const erroMessage = {
         'username.required': 'Esse campo é obrigatório',
         'username.unique': 'Esse usuário já existe',
@@ -97,9 +97,10 @@ class FuncionarioController {
         nome,
         telefone,
         email,
-        cpf
+        cpf,
+        ativo
       } = request.all()
-
+      console.log(username)
       const user = await User.create({
         username,
         password
@@ -113,7 +114,7 @@ class FuncionarioController {
         numero
       }, trx)
 
-      const pessoa = await pessoa.create({
+      const pessoa = await Pessoa.create({
         nome,
         cpf,
         email,
@@ -121,11 +122,17 @@ class FuncionarioController {
         endereco_id: endereco.id
       }, trx)
 
+      const funcionario = await Funcionario.create({
+        user_id: user.id,
+        pessoa_id: pessoa.id,
+        ativo: ativo
+      }, trx)
+
       await trx.commit()
 
-      return response.status(201).send({message: 'Escola criada com sucesso'});
+      return response.status(201).send({message: 'Funcionario criado com sucesso'});
     }catch (err) {
-      return response.status(500).send({error: `Erro: ${err.message}`})
+      return response.status(400).send({error: `Erro: ${err.message}`})
    }
   }
 
@@ -165,6 +172,12 @@ class FuncionarioController {
    * @param {Response} ctx.response
    */
   async update ({ params, request, response }) {
+    const funcionario = await Funcionario.findOrFail(params.id);
+    
+    funcionario.ativo = request.body.ativo
+    await funcionario.save();
+    
+    return funcionario
   }
 
   /**
