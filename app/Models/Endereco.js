@@ -5,12 +5,16 @@ const Model = use('Model')
 
 class Endereco extends Model {
 
+  static get hidden () {
+    return ['id']
+  }
+
   pessoa() {
-    return this.belongsTo('App/Models/Pessoa')
+    return this.hasOne('App/Models/Pessoa')
   }
 
   escola() {
-    return this.belongsTo('App/Models/Escola')
+    return this.hasOne('App/Models/Escola')
   }
 
 }

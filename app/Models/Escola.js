@@ -5,12 +5,16 @@ const Model = use('Model')
 
 class Escola extends Model {
 
+  static get hidden () {
+    return ['id', "user_id", "endereco_id"]
+  }
+
   usuario() {
-    return this.hasOne('App/Models/User')
+    return this.belongsTo('App/Models/User')
   }
 
   endereco() {
-    return this.hasOne('App/Models/Endereco')
+    return this.belongsTo('App/Models/Endereco')
   }
 
   visita() {

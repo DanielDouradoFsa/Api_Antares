@@ -6,11 +6,11 @@ const Model = use('Model')
 class Funcionario extends Model {
 
   pessoa() {
-    return this.hasOne('App/Models/Pessoa')
+    return this.belongsTo('App/Models/Pessoa')
   }
 
   usuario() {
-    return this.hasOne('App/Models/User')
+    return this.belongsTo('App/Models/User')
   }
 }
 
