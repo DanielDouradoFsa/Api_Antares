@@ -40,11 +40,12 @@ Route.delete('/funcionarios', 'FuncionarioController.destroy').middleware('auth'
 Route.get('/funcionarios/conta', 'FuncionarioController.show').middleware('auth') // Meus dados (funcionarios)
 
 // Acesso aos bolsistas
-Route.get('/bolsistas', 'BolsistaController.index').middleware('auth')
-Route.post('/bolsistas', 'BolsistaController.store').middleware('auth')
+/*Route.get('/bolsistas', 'BolsistaController.index').middleware('auth')
+Route.post('/bolsistas', 'BolsistaController.create').middleware('auth')
 Route.patch('/bolsistas', 'BolsistaController.update').middleware('auth')
 Route.delete('/bolsistas', 'BolsistaController.destroy').middleware('auth')
-Route.get('/bolsistas/conta', 'BolsistaController.show').middleware('auth') // Meus dados (bolsistas)
+Route.get('/bolsistas/conta', 'BolsistaController.show').middleware('auth')*/ // Meus dados (bolsistas)
+Route.resource('/bolsistas', 'BolsistaController').middleware('auth')
 
 
 /** Rotas a serem avaliadas
