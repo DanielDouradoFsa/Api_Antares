@@ -10,7 +10,6 @@
 const Database = use('Database')
 const Pessoa = use('App/Models/Pessoa')
 const User = use('App/Models/User')
-const Escola = use('App/Models/Escola')
 const Endereco = use('App/Models/Endereco')
 const Bolsista = use('App/Models/Bolsista')
 const Permissao = use('App/Models/Permissao')
@@ -64,6 +63,7 @@ class BolsistaController {
         'cpf.integer': 'Informe um valor inteiro',
         'matricula.required': 'Esse campo é obrigatório',
         'matricula.integer': 'Informe um valor inteiro',
+        'matricula.unique': 'Essa matrícula já existe',
         'meu_horario.boolean': 'Informe um valor boleano',
       }
 
@@ -79,7 +79,7 @@ class BolsistaController {
         telefone: 'required|integer',
         email: 'required|email',
         cpf: 'required|integer',
-        matricula: 'required|integer',
+        matricula: 'required|integer|unique:bolsistas',
         meu_horario: 'boolean'
       }, erroMessage)
 
