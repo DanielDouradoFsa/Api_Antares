@@ -3,7 +3,6 @@
 const Database = use('Database')
 const Pessoa = use('App/Models/Pessoa')
 const User = use('App/Models/User')
-const Escola = use('App/Models/Escola')
 const Endereco = use('App/Models/Endereco')
 const Bolsista = use('App/Models/Bolsista')
 const Permissao = use('App/Models/Permissao')
@@ -114,12 +113,11 @@ class BolsistaController {
         meus_agendamentos,
         editar_dados
       } = request.all()
-
       const user = await User.create({
         username,
         password
       }, trx)
-
+      console.log("Passou 1")
       const endereco = await Endereco.create({
         estado,
         cidade,
@@ -127,7 +125,7 @@ class BolsistaController {
         rua,
         numero
       }, trx)
-
+      console.log("Passou 2")
       const pessoa = await Pessoa.create({
         nome,
         cpf,
@@ -135,7 +133,7 @@ class BolsistaController {
         telefone,
         endereco_id: endereco.id
       }, trx)
-
+      console.log("Passou 3")
       const permissao = await Permissao.create({
         user_id:user.id,
         gerir_bolsista,
@@ -151,6 +149,7 @@ class BolsistaController {
         meus_agendamentos,
         editar_dados
       })
+      console.log("Passou 4")
       const bolsista = await Bolsista.create({
         pessoa_id: pessoa.id,
         user_id: user.id,
@@ -158,7 +157,8 @@ class BolsistaController {
         matricula,
         ativo
       })
-
+      console.log("Passou 5")
+      
       await trx.commit()
 
       return response.status(201).send({message: 'Bolsista criada com sucesso'});
@@ -166,7 +166,7 @@ class BolsistaController {
     }catch (err){
       await trx.rollback()
 
-      return response.status(400).send({
+      return response.status(500).send({
         error: `Erro: ${err.message}`
       })
     }
