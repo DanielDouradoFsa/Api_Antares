@@ -41,6 +41,7 @@ class HorarioController {
    * @param {Response} ctx.response
    */
   async store ({ request, response }) {
+    
   }
 
   /**

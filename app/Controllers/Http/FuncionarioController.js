@@ -19,6 +19,9 @@ const { validateAll } = use('Validator')
 class FuncionarioController {
 
   async index ({ request, response, view }) {
+    return await Database
+      .table('funcionarios')
+      .where('ativo', '0')
   }
 
   async store ({ request, response }) {
@@ -110,23 +113,20 @@ class FuncionarioController {
   }
 
   async show ({ params, request, response, view, auth }) {
-    const tarefa = Database.select("ativo").from("funcionarios").where("user_id",auth.user.id)
-    return tarefa
-
   }
 
   async update ({ params, request, response }) {
-    const funcionario = await Funcionario.findOrFail(params.id);
+  }
+    
+
+  async destroy ({ params, request, response, auth }) {
+    const funcionario = await Funcionario.findOrFail(auth.user.id);
     
     funcionario.ativo = request.body.ativo
     await funcionario.save();
     
     return funcionario
   }
-
-  async destroy ({ params, request, response }) {
-  }
-
 }
 
 module.exports = FuncionarioController

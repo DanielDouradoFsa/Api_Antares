@@ -12,7 +12,7 @@ class PermissaoSchema extends Schema {
         .inTable('users')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
-      table.boolean('gerir_bolsita').defaultTo(false);
+      table.boolean('gerir_bolsista').defaultTo(false);
       table.boolean('gerir_funcionario').defaultTo(false);
       table.boolean('agendamento').defaultTo(false);
       table.boolean('relatorio').defaultTo(false);
