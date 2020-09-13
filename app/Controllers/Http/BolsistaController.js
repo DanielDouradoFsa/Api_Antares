@@ -18,11 +18,30 @@ const { validateAll } = use('Validator')
 
 class BolsistaController {
 
-  async index ({ request, response, view }) {
+  async index ({ response }) {
+
+    try{
+      const bolsistas = await Bolsista
+        .query()
+        .with('pessoa')
+        .with('usuario', (builder) => {
+          builder.where('ativo', true)
+        })
+        .fetch()
+
+      return response.status(200).json(bolsistas)
+
+    }catch (err){
+      return response.status(404).send({
+        error: `Erro: ${err.message}`
+      })
+    }
+
   }
 
   async store ({ request, response }) {
     const trx = await Database.beginTransaction()
+
     try{
       const erroMessage = {
         'username.required': 'Esse campo é obrigatório',
@@ -35,10 +54,17 @@ class BolsistaController {
         'bairro.required': 'Esse campo é obrigatório',
         'rua.required': 'Esse campo é obrigatório',
         'numero.required': 'Esse campo é obrigatório',
+        'numero.integer': 'Informe um valor inteiro',
         'nome.required': 'Esse campo é obrigatório',
         'telefone.required': 'Esse campo é obrigatório',
+        'telefone.integer': 'Informe um valor inteiro',
         'email.required': 'Esse campo é obrigatório',
         'email.email': 'Informe um email válido',
+        'cpf.required': 'Esse campo é obrigatório',
+        'cpf.integer': 'Informe um valor inteiro',
+        'matricula.required': 'Esse campo é obrigatório',
+        'matricula.integer': 'Informe um valor inteiro',
+        'meu_horario.boolean': 'Informe um valor boleano',
       }
 
       const validation = await validateAll(request.all(), {
@@ -48,10 +74,13 @@ class BolsistaController {
         cidade: 'required',
         bairro: 'required',
         rua: 'required',
-        numero: 'required',
+        numero: 'required|integer',
         nome: 'required',
-        telefone: 'required',
+        telefone: 'required|integer',
         email: 'required|email',
+        cpf: 'required|integer',
+        matricula: 'required|integer',
+        meu_horario: 'boolean'
       }, erroMessage)
 
       if(validation.fails()){
@@ -73,19 +102,7 @@ class BolsistaController {
         email,
         telefone,
         matricula,
-        ativo,
-        gerir_bolsista,
-        gerir_funcionario,
-        agendamento,
-        relatorio,
-        cadastrar_atividade,
-        gerir_horario_bolsista,
-        gerir_backup,
-        ver_escolas,
-        meu_horario,
-        agendar_visita,
-        meus_agendamentos,
-        editar_dados
+        meu_horario
       } = request.all()
 
       const user = await User.create({
@@ -111,27 +128,15 @@ class BolsistaController {
 
       const permissao = await Permissao.create({
         user_id:user.id,
-        gerir_bolsista,
-        gerir_funcionario,
-        agendamento,
-        relatorio,
-        cadastrar_atividade,
-        gerir_horario_bolsista,
-        gerir_backup,
-        ver_escolas,
-        meu_horario,
-        agendar_visita,
-        meus_agendamentos,
-        editar_dados
-      })
+        meu_horario
+      }, trx)
 
       const bolsista = await Bolsista.create({
         pessoa_id: pessoa.id,
         user_id: user.id,
         permissao_id:permissao.id,
-        matricula,
-        ativo
-      })
+        matricula
+      }, trx)
 
       await trx.commit()
 

@@ -11,22 +11,20 @@
 const Database = use("Database")
 const Funcionario = use('App/Models/Funcionario')
 const User = use('App/Models/User')
-const Escola = use('App/Models/Escola')
 const Endereco = use('App/Models/endereco')
 const Pessoa =  use('App/Models/Pessoa')
 const { validateAll } = use('Validator')
 
 class FuncionarioController {
 
-  async index ({ request, response, view }) {
-    return await Database
-      .table('funcionarios')
-      .where('ativo', '0')
+  async index ({ response }) {
 
     try{
-      const funcionarios = await Database
-        .table('funcionarios')
-        .where('ativo', '0')
+      const funcionarios = await Escola
+        .query()
+        .with('pessoa')
+        .with('usuario')
+        .fetch()
 
       return response.status(200).json(funcionarios)
 
@@ -35,6 +33,7 @@ class FuncionarioController {
         error: `Erro: ${err.message}`
       })
     }
+
   }
 
   async store ({ request, response }) {
@@ -125,7 +124,19 @@ class FuncionarioController {
    }
   }
 
-  async show ({ params, request, response, view, auth }) {
+  async show ({ response, auth }) {
+    try{
+      const funcionario = await Funcionario.findBy('user_id', auth.user.id)
+
+      await escolas.loadMany(['pessoa', 'usuario'])
+
+      return response.status(200).json(funcionario)
+
+    }catch (err){
+      return response.status(404).send({
+        error: `Erro: ${err.message}`
+      })
+    }
   }
 
   async update ({ params, request, response }) {

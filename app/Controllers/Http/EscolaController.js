@@ -48,14 +48,19 @@ class EscolaController {
         'bairro.required': 'Esse campo é obrigatório',
         'rua.required': 'Esse campo é obrigatório',
         'numero.required': 'Esse campo é obrigatório',
+        'numero.integer': 'Informe um valor inteiro',
         'nome.required': 'Esse campo é obrigatório',
         'telefone.required': 'Esse campo é obrigatório',
+        'telefone.integer': 'Informe um valor inteiro',
         'nome_responsavel.required': 'Esse campo é obrigatório',
         'telefone_responsavel.required': 'Esse campo é obrigatório',
+        'telefone_responsavel.integer': 'Informe um valor inteiro',
         'email.required': 'Esse campo é obrigatório',
         'email.email': 'Informe um email válido',
+        'email.unique': 'Esse email já existe',
         'tipo.required': 'Esse campo é obrigatório',
         'cnpj.required': 'Esse campo é obrigatório',
+        'cnpj.integer': 'Informe um valor inteiro',
       }
 
       const validation = await validateAll(request.all(), {
@@ -65,14 +70,14 @@ class EscolaController {
         cidade: 'required',
         bairro: 'required',
         rua: 'required',
-        numero: 'required',
+        numero: 'required|integer',
         nome: 'required',
-        telefone: 'required',
+        telefone: 'required|integer',
         nome_responsavel: 'required',
-        telefone_responsavel: 'required',
-        email: 'required|email',
+        telefone_responsavel: 'required|integer',
+        email: 'required|email|unique:escolas',
         tipo: 'required',
-        cnpj: 'required'
+        cnpj: 'required|integer'
       }, erroMessage)
 
       if(validation.fails()){
@@ -137,7 +142,7 @@ class EscolaController {
 
   }
 
-  async show ({ params, request, response, auth }) {
+  async show ({ response, auth }) {
     try{
       const escolas = await Escola.findBy('user_id', auth.user.id)
 
@@ -162,12 +167,20 @@ class EscolaController {
         'username.min': 'O campo deve ter no mínimo 5 caracteres',
         'password.min': 'O campo deve ter no mínimo 6 caracteres',
         'email.email': 'Informe um email válido',
+        'numero.integer': 'Informe um valor inteiro',
+        'telefone.integer': 'Informe um valor inteiro',
+        'telefone_responsavel.integer': 'Informe um valor inteiro',
+        'cnpj.integer': 'Informe um valor inteiro',
       }
 
       const validation = await validateAll(request.all(), {
         username: 'min:5|unique:users',
         password: 'min:6',
         email: 'email',
+        numero: 'integer',
+        telefone: 'integer',
+        telefone_responsavel: 'integer',
+        cnpj: 'integer',
       }, erroMessage)
 
       if(validation.fails()){
@@ -259,7 +272,7 @@ class EscolaController {
 
   }
 
-  async destroy ({ params, request, response, auth }) {
+  async destroy ({ response, auth }) {
 
     try{
       const user = await User.find(auth.user.id)

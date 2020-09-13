@@ -22,15 +22,9 @@
     <list default="true" id="f29c8301-3a2d-4154-9b78-511809f8d7cb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Http/BolsistaController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/BolsistaController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/EscolaController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/EscolaController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Http/FuncionarioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/FuncionarioController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Permissao.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Permissao.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/1598362844958_permissao_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362844958_permissao_schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/1598362874739_pessoa_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362874739_pessoa_schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/1598362903173_visita_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362903173_visita_schema.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/1598362910487_bolsista_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362910487_bolsista_schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/1598362919578_funcionario_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362919578_funcionario_schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/1598362925384_escola_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362925384_escola_schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +76,7 @@
       <workItem from="1599770025809" duration="114000" />
       <workItem from="1599783507477" duration="174000" />
       <workItem from="1599783708273" duration="809000" />
-      <workItem from="1599966400384" duration="2548000" />
+      <workItem from="1599966400384" duration="7705000" />
     </task>
     <servers />
   </component>
