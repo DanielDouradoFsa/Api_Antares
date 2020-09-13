@@ -27,7 +27,6 @@ class BolsistaSchema extends Schema {
         .onDelete('CASCADE');
 
       table.integer('matricula').notNullable();
-      table.boolean('ativo').notNullable();
       table.timestamps();
     })
   }

@@ -22,6 +22,19 @@ class FuncionarioController {
     return await Database
       .table('funcionarios')
       .where('ativo', '0')
+
+    try{
+      const funcionarios = await Database
+        .table('funcionarios')
+        .where('ativo', '0')
+
+      return response.status(200).json(funcionarios)
+
+    }catch (err){
+      return response.status(404).send({
+        error: `Erro: ${err.message}`
+      })
+    }
   }
 
   async store ({ request, response }) {
@@ -117,15 +130,25 @@ class FuncionarioController {
 
   async update ({ params, request, response }) {
   }
-    
 
-  async destroy ({ params, request, response, auth }) {
-    const funcionario = await Funcionario.findOrFail(auth.user.id);
-    
-    funcionario.ativo = request.body.ativo
-    await funcionario.save();
-    
-    return funcionario
+  async destroy ({ response, auth }) {
+
+    try{
+      const funcionario = await Funcionario.find(auth.user.id)
+
+      if(funcionario == null)
+        return response.status(404).send({message: 'Funcionário não localizado'})
+
+      funcionario.ativo = false
+      await funcionario.save()
+
+      return response.status(204).send({message: 'Funcionário foi desativado'})
+
+    }catch (err){
+      return response.status(404).send({
+        error: `Erro: ${err.message}`
+      })
+    }
   }
 }
 
