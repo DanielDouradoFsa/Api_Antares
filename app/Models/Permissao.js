@@ -5,6 +5,10 @@ const Model = use('Model')
 
 class Permissao extends Model {
 
+  static get table () {
+    return 'permissoes'
+  }
+
   usuario() {
     return this.belongsTo('App/Models/User')
   }

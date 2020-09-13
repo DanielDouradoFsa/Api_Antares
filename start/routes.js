@@ -56,5 +56,5 @@ Route.patch('/usuario/conta', 'MinhaContaController.update').middleware('auth')
 
 // Acesso aos usuarios gerais
 Route.resource('/usuarios', 'UserController').apiOnly()
- 
+
  **/

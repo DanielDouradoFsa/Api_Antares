@@ -15,7 +15,7 @@ class VisitaSchema extends Schema {
       table.date('data').notNullable();
       table.integer('numero_visitantes').defaultTo(0).notNullable();
       table.string('nome_responsavel', 120).notNullable();
-      table.integer('status', 1).defaultTo(1).notNullable();
+      table.boolean('status').defaultTo(true)
       table.timestamps();
     })
   }
