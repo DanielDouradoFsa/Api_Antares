@@ -47,11 +47,11 @@ Route.delete('/bolsistas', 'BolsistaController.destroy').middleware('auth')
 /*Route.get('/bolsistas/conta', 'BolsistaController.show').middleware('auth')*/ // Meus dados (bolsistas)
 Route.resource('/bolsistas', 'BolsistaController').middleware('auth')
 
-Route.get('/horarios', 'FuncionarioController.index').middleware('auth')
-Route.post('/horarios', 'FuncionarioController.store').middleware('auth')
-Route.patch('/horarios', 'FuncionarioController.update').middleware('auth')
-Route.delete('/horarios', 'FuncionarioController.destroy').middleware('auth')
-Route.get('/horarios/conta', 'FuncionarioController.show').middleware('auth')
+Route.get('/horarios', 'HorarioController.index').middleware('auth')
+Route.post('/horarios', 'HorarioController.store').middleware('auth')
+Route.patch('/horarios', 'HorarioController.update').middleware('auth')
+Route.delete('/horarios', 'HorarioController.destroy').middleware('auth')
+Route.get('/horarios/conta', 'HorarioController.show').middleware('auth')
 
 
 /** Rotas a serem avaliadas

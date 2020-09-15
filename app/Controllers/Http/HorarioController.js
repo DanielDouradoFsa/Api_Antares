@@ -54,7 +54,7 @@ class HorarioController {
         'horario_fim.required': 'Esse campo é obrigatório',
       }
       const validation = await validateAll(request.all(), {
-        bolsista_id: 'required|unique:users',
+        bolsista_id: 'required|unique:Horarios',
         dia: 'required',
         horario_inicio: 'required',
         horario_fim: 'required',
