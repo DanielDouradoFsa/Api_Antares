@@ -22,7 +22,7 @@ class BolsistaController {
     try{
       const bolsistas = await Bolsista
         .query()
-        .with('pessoa')
+        .with('pessoa.endereco')
         .with('usuario', (builder) => {
           builder.where('ativo', true)
         })
@@ -110,20 +110,20 @@ class BolsistaController {
         password
       }, trx)
 
-      const endereco = await Endereco.create({
-        estado,
-        cidade,
-        bairro,
-        rua,
-        numero
-      }, trx)
-
       const pessoa = await Pessoa.create({
         nome,
         cpf,
         email,
-        telefone,
-        endereco_id: endereco.id
+        telefone
+      }, trx)
+
+      await Endereco.create({
+        estado,
+        cidade,
+        bairro,
+        rua,
+        numero,
+        pessoa_id: pessoa.id
       }, trx)
 
       const permissao = await Permissao.create({
@@ -131,7 +131,7 @@ class BolsistaController {
         meu_horario
       }, trx)
 
-      const bolsista = await Bolsista.create({
+      await Bolsista.create({
         pessoa_id: pessoa.id,
         user_id: user.id,
         permissao_id:permissao.id,
@@ -151,13 +151,92 @@ class BolsistaController {
     }
   }
 
-  async show ({ params, request, response, view }) {
+  async show ({ response, auth }) {
+
+    try{
+      const bolsista = await Bolsista.findBy('user_id', auth.user.id)
+
+      await bolsista.loadMany(['pessoa.endereco', 'usuario'])
+
+      return response.status(200).json(bolsista)
+
+    }catch (err){
+      return response.status(404).send({
+        error: `Erro: ${err.message}`
+      })
+    }
+
   }
 
-  async update ({ params, request, response }) {
+  async update ({ request, response, auth }) {
+
+    const trx = await Database.beginTransaction()
+
+    try{
+      const erroMessage = {
+        'username.unique': 'Esse usuário já existe',
+        'username.min': 'O campo deve ter no mínimo 5 caracteres',
+        'password.min': 'O campo deve ter no mínimo 6 caracteres',
+        'email.email': 'Informe um email válido',
+        'email.unique': 'Esse email já existe',
+        'matricula.integer': 'Informe um valor inteiro',
+        'matricula.unique': 'Essa matricula já existe',
+        'numero.integer': 'Informe um valor inteiro',
+        'telefone.integer': 'Informe um valor inteiro',
+        'cpf.integer': 'Informe um valor inteiro',
+      }
+
+      const validation = await validateAll(request.all(), {
+        username: 'min:5|unique:users',
+        matricula: 'integer|unique:bolsistas',
+        password: 'min:6',
+        email: 'email|unique:pessoas',
+        numero: 'integer',
+        telefone: 'integer',
+        cpf: 'integer',
+      }, erroMessage)
+
+      if(validation.fails()){
+        return response.status(400).send({
+          message: validation.messages()
+        })
+      }
+
+      const bolsista = await Bolsista.findBy('user_id', auth.user.id)
+      const pessoa = await Pessoa.find(bolsista.pessoa_id)
+      const endereco = await Endereco.findBy('pessoa_id', bolsista.pessoa_id)
+      const usuario = await User.find(auth.user.id)
+
+      const bolsistaReq = request.only(['matricula'])
+      const pessoaReq = request.only(['nome', 'cpf', 'email', 'telefone'])
+      const enderecoReq = request.only(['nome', 'cpf', 'email', 'telefone'])
+      const usuarioReq = request.only(['estado', 'cidade', 'bairro', 'rua', 'numero'])
+
+      bolsista.merge({ ...bolsistaReq })
+      pessoa.merge({ ...pessoaReq })
+      endereco.merge({ ...enderecoReq })
+      usuario.merge({ ...usuarioReq })
+
+      await bolsista.save(trx)
+      await pessoa.save(trx)
+      await endereco.save(trx)
+      await usuario.save(trx)
+
+      await trx.commit()
+
+      return response.status(201).send({message: 'Bolsista alterado com sucesso'});
+
+    }catch (err){
+      await trx.rollback()
+
+      return response.status(400).send({
+        error: `Erro: ${err.message}`
+      })
+    }
   }
 
-  async destroy ({ params, request, response, auth }) {
+  async destroy ({ response, auth }) {
+
     try{
       const user = await User.find(auth.user.id)
 
