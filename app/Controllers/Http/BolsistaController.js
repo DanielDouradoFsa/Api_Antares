@@ -209,8 +209,8 @@ class BolsistaController {
 
       const bolsistaReq = request.only(['matricula'])
       const pessoaReq = request.only(['nome', 'cpf', 'email', 'telefone'])
-      const enderecoReq = request.only(['nome', 'cpf', 'email', 'telefone'])
-      const usuarioReq = request.only(['estado', 'cidade', 'bairro', 'rua', 'numero'])
+      const enderecoReq = request.only(['estado', 'cidade', 'bairro', 'rua', 'numero'])
+      const usuarioReq = request.only(['username', 'password'])
 
       bolsista.merge({ ...bolsistaReq })
       pessoa.merge({ ...pessoaReq })

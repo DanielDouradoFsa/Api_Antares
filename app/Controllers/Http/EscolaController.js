@@ -195,8 +195,8 @@ class EscolaController {
       const usuario = await User.find(auth.user.id)
 
       const escolaReq = request.only(['nome', 'cnpj', 'email', 'telefone', 'tipo', 'telefone_responsavel', 'nome_responsavel'])
-      const enderecoReq = request.only(['nome', 'cpf', 'email', 'telefone'])
-      const usuarioReq = request.only(['estado', 'cidade', 'bairro', 'rua', 'numero'])
+      const enderecoReq = request.only(['estado', 'cidade', 'bairro', 'rua', 'numero'])
+      const usuarioReq = request.only(['username', 'password'])
 
       escola.merge({ ...escolaReq })
       endereco.merge({ ...enderecoReq })

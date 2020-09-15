@@ -175,8 +175,8 @@ class FuncionarioController {
       const usuario = await User.find(auth.user.id)
 
       const pessoaReq = request.only(['nome', 'cpf', 'email', 'telefone'])
-      const enderecoReq = request.only(['nome', 'cpf', 'email', 'telefone'])
-      const usuarioReq = request.only(['estado', 'cidade', 'bairro', 'rua', 'numero'])
+      const enderecoReq = request.only(['estado', 'cidade', 'bairro', 'rua', 'numero'])
+      const usuarioReq = request.only(['username', 'password'])
 
       pessoa.merge({ ...pessoaReq })
       endereco.merge({ ...enderecoReq })
