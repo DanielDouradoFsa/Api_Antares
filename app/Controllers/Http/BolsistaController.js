@@ -157,7 +157,23 @@ class BolsistaController {
   async update ({ params, request, response }) {
   }
 
-  async destroy ({ params, request, response }) {
+  async destroy ({ params, request, response, auth }) {
+    try{
+      const user = await User.find(auth.user.id)
+
+      if(user == null)
+        return response.status(404).send({message: 'Usuário não localizado'})
+
+      user.ativo = false
+      await user.save()
+
+      return response.status(204).send({message: 'Usuário foi desativado'})
+
+    }catch (err){
+      return response.status(404).send({
+        error: `Erro: ${err.message}`
+      })
+    }
   }
 }
 
