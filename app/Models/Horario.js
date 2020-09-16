@@ -6,7 +6,8 @@ const Model = use('Model')
 class Horario extends Model {
 
   bolsista() {
-    return this.belongsTo('App/Models/Bolsista')
+    return this.belongsToMany('App/Models/Bolsista')
+      .pivotTable('horario_bolsistas')
   }
 
   visita() {
@@ -14,7 +15,8 @@ class Horario extends Model {
   }
 
   atracao() {
-    return this.belongsTo('App/Models/Atracao')
+    return this.belongsToMany('App/Models/Atracao')
+      .pivotTable('horario_atracoes')
   }
 }
 

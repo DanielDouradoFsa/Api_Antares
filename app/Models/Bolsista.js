@@ -14,7 +14,8 @@ class Bolsista extends Model {
   }
 
   horario() {
-    return this.hasMany('App/Models/Horario')
+    return this.belongsToMany('App/Models/Horario')
+      .pivotTable('horario_bolsistas')
   }
 
 }

@@ -5,8 +5,13 @@ const Model = use('Model')
 
 class Atracao extends Model {
 
+  static get table () {
+    return 'atracoes'
+  }
+
   horario() {
-    return this.hasMany('App/Models/Horario')
+    return this.belongsToMany('App/Models/Horario')
+      .pivotTable('horario_atracoes')
   }
 
   visita() {
