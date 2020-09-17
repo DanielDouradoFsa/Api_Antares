@@ -20,7 +20,7 @@ Route.post('/login', 'UserController.login').middleware('guest')
 Route.get('/logout', 'UserController.logout').middleware('auth')
 
 // Retorna todos os usuários ativos
-Route.get('/usuarios', 'UserController.index').middleware('auth')
+Route.resource('/usuarios', 'UserController').apiOnly()
 
 // Atualiza um usuário
 Route.patch('/usuarios', 'UserController.update').middleware('auth')
@@ -60,6 +60,6 @@ Route.get('/usuario/conta', 'MinhaContaController.show').middleware('auth')
 Route.patch('/usuario/conta', 'MinhaContaController.update').middleware('auth')
 
 // Acesso aos usuarios gerais
-Route.resource('/usuarios', 'UserController').apiOnly()
+
 
  **/

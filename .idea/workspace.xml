@@ -21,11 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f29c8301-3a2d-4154-9b78-511809f8d7cb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Atracao.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Atracao.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Bolsista.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Bolsista.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Horario.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Horario.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/1598362882536_horario_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362882536_horario_schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/1598362890099_atracao_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362890099_atracao_schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +79,7 @@
       <workItem from="1600174747186" duration="342000" />
       <workItem from="1600190684789" duration="2629000" />
       <workItem from="1600256793360" duration="792000" />
+      <workItem from="1600349240989" duration="200000" />
     </task>
     <servers />
   </component>
