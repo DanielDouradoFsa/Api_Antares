@@ -235,10 +235,12 @@ class BolsistaController {
     }
   }
 
-  async destroy ({ response, auth }) {
+  async destroy ({ response,request, auth }) {
 
     try{
-      const user = await User.find(auth.user.id)
+      const bolsista = await Bolsista.findBy('matricula',request.body.matricula)
+      const user = await User.findBy('id',bolsista.user_id)
+      console.log(user)
 
       if(user == null)
         return response.status(404).send({message: 'Usuário não localizado'})

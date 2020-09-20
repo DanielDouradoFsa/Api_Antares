@@ -10,6 +10,7 @@
 
 const Database = use("Database")
 const Funcionario = use('App/Models/Funcionario')
+const Permissao = use('App/Models/Permissao')
 const User = use('App/Models/User')
 const Endereco = use('App/Models/endereco')
 const Pessoa =  use('App/Models/Pessoa')
@@ -86,7 +87,18 @@ class FuncionarioController {
         telefone,
         email,
         cpf,
-        ativo
+        gerir_bolsista,
+        gerir_funcionario,
+        agendamento,
+        relatorio,
+        cadastrar_atividade,
+        gerir_horario_bolsista,
+        gerir_backup,
+        ver_escolas,
+        meu_horario,
+        agendar_visita,
+        meus_agendamentos,
+        editar_dados
       } = request.all()
 
       const user = await User.create({
@@ -110,10 +122,26 @@ class FuncionarioController {
         pessoa_id: pessoa.id
       }, trx)
 
+      const permissao = await Permissao.create({
+        user_id:user.id,
+        gerir_bolsista,
+        gerir_funcionario,
+        agendamento,
+        relatorio,
+        cadastrar_atividade,
+        gerir_horario_bolsista,
+        gerir_backup,
+        ver_escolas,
+        meu_horario,
+        agendar_visita,
+        meus_agendamentos,
+        editar_dados
+      }, trx)
+      
       await Funcionario.create({
         user_id: user.id,
         pessoa_id: pessoa.id,
-        ativo: ativo
+        permissao_id: permissao.id
       }, trx)
 
       await trx.commit()

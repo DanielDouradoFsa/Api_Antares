@@ -18,6 +18,7 @@ const Route = use('Route')
 
 Route.post('/login', 'UserController.login').middleware('guest')
 Route.get('/logout', 'UserController.logout').middleware('auth')
+Route.post('/CriarUser', 'UserController.store').middleware('guest')
 
 // Retorna todos os usuários ativos
 Route.get('/usuarios', 'UserController.index').middleware('auth')
@@ -41,7 +42,7 @@ Route.get('/funcionarios/conta', 'FuncionarioController.show').middleware('auth'
 
 // Acesso aos bolsistas
 Route.get('/bolsistas', 'BolsistaController.index').middleware('auth')
-Route.post('/bolsistas', 'BolsistaController.create').middleware('auth')
+Route.post('/bolsistas', 'BolsistaController.store').middleware('auth')
 Route.patch('/bolsistas', 'BolsistaController.update').middleware('auth')
 Route.delete('/bolsistas', 'BolsistaController.destroy').middleware('auth')
 Route.get('/bolsistas/conta', 'BolsistaController.show').middleware('auth') // Meus dados (bolsistas)
