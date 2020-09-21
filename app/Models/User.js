@@ -41,7 +41,7 @@ class User extends Model {
   }
 
   funcionario() {
-    return this.belongsTo('App/Models/Funcionario')
+    return this.hasOne('App/Models/Funcionario')
   }
 
   escola() {
@@ -49,11 +49,11 @@ class User extends Model {
   }
 
   bolsista() {
-    return this.belongsTo('App/Models/Bolsista')
+    return this.hasOne('App/Models/Bolsista')
   }
 
   permissao() {
-    return this.hasOne('App/Models/Permissao')
+    return this.belongsTo('App/Models/Permissao')
   }
 }
 

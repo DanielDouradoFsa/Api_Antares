@@ -21,7 +21,19 @@
   <component name="ChangeListManager">
     <list default="true" id="f29c8301-3a2d-4154-9b78-511809f8d7cb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/BolsistaController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/BolsistaController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/EscolaController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/EscolaController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/FuncionarioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/FuncionarioController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Permissao.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Permissao.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Pessoa.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Pessoa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1503250034279_user.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1503250034279_user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1598362844956_pessoa_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362844956_pessoa_schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1598362844957_endereco_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362844955_endereco_schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1598362844958_permissao_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1503250034278_permissao_schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1598362882535_bolsista_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362882535_bolsista_schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1598362919578_funcionario_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362919578_funcionario_schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1598362925384_escola_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598362925384_escola_schema.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +92,7 @@
       <workItem from="1600190684789" duration="2629000" />
       <workItem from="1600256793360" duration="792000" />
       <workItem from="1600349240989" duration="200000" />
+      <workItem from="1600693700695" duration="7884000" />
     </task>
     <servers />
   </component>
@@ -99,21 +112,21 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1345" height="179" key="GridCell.Tab.0.bottom" timestamp="1599169114600">
+    <state width="1345" height="179" key="GridCell.Tab.0.bottom" timestamp="1600693827789">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1599169114600" />
-    <state width="1345" height="179" key="GridCell.Tab.0.center" timestamp="1599169114600">
+    <state width="1345" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1600693827789" />
+    <state width="1345" height="179" key="GridCell.Tab.0.center" timestamp="1600693827789">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1599169114600" />
-    <state width="1345" height="179" key="GridCell.Tab.0.left" timestamp="1599169114600">
+    <state width="1345" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1600693827789" />
+    <state width="1345" height="179" key="GridCell.Tab.0.left" timestamp="1600693827788">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1599169114600" />
-    <state width="1345" height="179" key="GridCell.Tab.0.right" timestamp="1599169114600">
+    <state width="1345" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1600693827788" />
+    <state width="1345" height="179" key="GridCell.Tab.0.right" timestamp="1600693827789">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1599169114600" />
+    <state width="1345" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1600693827789" />
   </component>
 </project>

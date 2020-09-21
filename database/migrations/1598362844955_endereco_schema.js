@@ -7,12 +7,6 @@ class EnderecoSchema extends Schema {
   up () {
     this.create('enderecos', (table) => {
       table.increments('id');
-      table.integer('pessoa_id').unsigned()
-        .references('id')
-        .inTable('pessoas')
-        .onUpdate('CASCADE')
-        .onDelete('CASCADE');
-
       table.string('estado', 22).notNullable();
       table.string('cidade', 120).notNullable();
       table.string('bairro', 120).notNullable();

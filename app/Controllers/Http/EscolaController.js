@@ -20,7 +20,7 @@ class EscolaController {
       const escolas = await Escola
         .query()
         .with('endereco')
-        .with('usuario')
+        .with('usuario.permissao')
         .fetch()
 
       return response.status(200).json(escolas)
@@ -61,6 +61,7 @@ class EscolaController {
         'tipo.required': 'Esse campo é obrigatório',
         'cnpj.required': 'Esse campo é obrigatório',
         'cnpj.integer': 'Informe um valor inteiro',
+        'cnpj.unique': 'Esse cnpj já existe',
       }
 
       const validation = await validateAll(request.all(), {
@@ -77,7 +78,7 @@ class EscolaController {
         telefone_responsavel: 'required|integer',
         email: 'required|email|unique:escolas',
         tipo: 'required',
-        cnpj: 'required|integer'
+        cnpj: 'required|integer|unique:escolas'
       }, erroMessage)
 
       if(validation.fails()){
@@ -105,7 +106,8 @@ class EscolaController {
 
       const user = await User.create({
         username,
-        password
+        password,
+        permissao_id: 2 //Todas as escolas serão ref. para a coluna 2 de permissâo
       }, trx)
 
       const endereco = await Endereco.create({

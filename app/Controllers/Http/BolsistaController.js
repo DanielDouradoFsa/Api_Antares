@@ -23,9 +23,7 @@ class BolsistaController {
       const bolsistas = await Bolsista
         .query()
         .with('pessoa.endereco')
-        .with('usuario', (builder) => {
-          builder.where('ativo', true)
-        })
+        .with('usuario.permissao')
         .fetch()
 
       return response.status(200).json(bolsistas)
@@ -64,7 +62,6 @@ class BolsistaController {
         'matricula.required': 'Esse campo é obrigatório',
         'matricula.integer': 'Informe um valor inteiro',
         'matricula.unique': 'Essa matrícula já existe',
-        'meu_horario.boolean': 'Informe um valor boleano',
       }
 
       const validation = await validateAll(request.all(), {
@@ -79,8 +76,7 @@ class BolsistaController {
         telefone: 'required|integer',
         email: 'required|email',
         cpf: 'required|integer',
-        matricula: 'required|integer|unique:bolsistas',
-        meu_horario: 'boolean'
+        matricula: 'required|integer|unique:bolsistas'
       }, erroMessage)
 
       if(validation.fails()){
@@ -101,40 +97,34 @@ class BolsistaController {
         cpf,
         email,
         telefone,
-        matricula,
-        meu_horario
+        matricula
       } = request.all()
 
       const user = await User.create({
         username,
-        password
+        password,
+        permissao_id: 1 //Todos os bolsista serão ref. para a coluna 1 de permissâo
+      }, trx)
+
+      const endereco = await Endereco.create({
+        estado,
+        cidade,
+        bairro,
+        rua,
+        numero
       }, trx)
 
       const pessoa = await Pessoa.create({
         nome,
         cpf,
         email,
-        telefone
-      }, trx)
-
-      await Endereco.create({
-        estado,
-        cidade,
-        bairro,
-        rua,
-        numero,
-        pessoa_id: pessoa.id
-      }, trx)
-
-      const permissao = await Permissao.create({
-        user_id:user.id,
-        meu_horario
+        telefone,
+        endereco_id: endereco.id
       }, trx)
 
       await Bolsista.create({
         pessoa_id: pessoa.id,
         user_id: user.id,
-        permissao_id:permissao.id,
         matricula
       }, trx)
 
@@ -156,7 +146,7 @@ class BolsistaController {
     try{
       const bolsista = await Bolsista.findBy('user_id', auth.user.id)
 
-      await bolsista.loadMany(['pessoa.endereco', 'usuario'])
+      await bolsista.loadMany(['pessoa.endereco', 'usuario.permissao'])
 
       return response.status(200).json(bolsista)
 
@@ -235,12 +225,11 @@ class BolsistaController {
     }
   }
 
-  async destroy ({ response,request, auth }) {
+  async destroy ({ request, response, auth }) {
 
     try{
-      const bolsista = await Bolsista.findBy('matricula',request.body.matricula)
+      const bolsista = await Bolsista.findBy('matricula', request.body.matricula)
       const user = await User.findBy('id',bolsista.user_id)
-      console.log(user)
 
       if(user == null)
         return response.status(404).send({message: 'Usuário não localizado'})

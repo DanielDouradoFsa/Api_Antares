@@ -7,12 +7,6 @@ class PermissaoSchema extends Schema {
   up () {
     this.create('permissoes', (table) => {
       table.increments('id');
-      table.integer('user_id').unsigned()
-        .references('id')
-        .inTable('users')
-        .onUpdate('CASCADE')
-        .onDelete('CASCADE');
-
       table.boolean('gerir_bolsista').defaultTo(false);
       table.boolean('gerir_funcionario').defaultTo(false);
       table.boolean('agendamento').defaultTo(false);

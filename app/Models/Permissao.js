@@ -10,8 +10,9 @@ class Permissao extends Model {
   }
 
   usuario() {
-    return this.belongsTo('App/Models/User')
+    return this.hasOne('App/Models/User')
   }
+
 }
 
 module.exports = Permissao

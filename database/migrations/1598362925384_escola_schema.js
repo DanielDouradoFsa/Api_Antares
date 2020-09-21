@@ -18,8 +18,9 @@ class EscolaSchema extends Schema {
         .inTable('enderecos')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
+
       table.string('nome', 255).notNullable();
-      table.integer('cnpj', 14).notNullable();
+      table.integer('cnpj', 14).notNullable().unique();
       table.integer('telefone').notNullable();
       table.string('nome_responsavel', 255).notNullable();
       table.integer('telefone_responsavel').notNullable();

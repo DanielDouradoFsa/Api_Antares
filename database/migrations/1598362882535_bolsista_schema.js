@@ -20,12 +20,6 @@ class BolsistaSchema extends Schema {
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
 
-      table.integer('permissao_id').unsigned()
-        .references('id')
-        .inTable('permissoes')
-        .onUpdate('CASCADE')
-        .onDelete('CASCADE');
-
       table.integer('matricula').notNullable().unique();
       table.timestamps();
     })

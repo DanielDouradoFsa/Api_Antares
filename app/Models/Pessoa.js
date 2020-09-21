@@ -14,7 +14,7 @@ class Pessoa extends Model {
   }
 
   endereco() {
-    return this.hasOne('App/Models/Endereco')
+    return this.belongsTo('App/Models/Endereco')
   }
 }
 
