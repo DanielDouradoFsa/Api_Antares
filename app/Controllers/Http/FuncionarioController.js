@@ -227,11 +227,13 @@ class FuncionarioController {
     }
 
   }
-
   async destroy ({ response, auth }) {
 
     try{
-      const funcionario = await Funcionario.find(auth.user.id)
+      const funcRef = await Database.from("funcionarios").where("updated_at",request.body.updated_at)
+      .andWhere("created_at",request.body.created_at)
+      .first()
+      const funcionario = await Funcionario.findBy('id',funcRef.id)
 
       if(funcionario == null)
         return response.status(404).send({message: 'Funcionário não localizado'})
