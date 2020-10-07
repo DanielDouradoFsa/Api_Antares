@@ -47,7 +47,7 @@ class FuncionarioSeeder {
       cidade: 'Feira de Santana',
       bairro: '',
       rua: '',
-      numero: ''
+      numero: 0
     })
 
     const pessoa = await Pessoa.create({

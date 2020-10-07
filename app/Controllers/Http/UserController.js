@@ -27,7 +27,6 @@ class UserController {
       }
 
       const { username, password } = request.only(['username', 'password'])
-      console.log(username,password)
       const validaToken = await auth.attempt(username, password)
       return response.status(200).send(validaToken)
 

@@ -315,19 +315,15 @@ class FuncionarioController {
   async destroy ({ request, response, auth }) {
 
     try{
-      /*const funcRef = await Database.from("funcionarios").where("updated_at", request.body.updated_at)
-      .andWhere("created_at", request.body.created_at)
-      .first()*/
-      const userRef = await User.findBy('username', request.body.username)
-      const funcionario = await Funcionario.findBy('user_id', userRef.id)
+      const user = await User.findBy('username', request.body.username)
 
-      if(funcionario == null)
+      if(user == null)
         return response.status(404).send({message: 'Funcionário não localizado'})
 
-      funcionario.ativo = false
-      await funcionario.save()
+      user.ativo = false
+      await user.save()
 
-      return response.status(204).send({message: 'Funcionário foi desativado'})
+      return response.status(200).send({message: 'Funcionário foi desativado'})
 
     }catch (err){
       return response.status(404).send({

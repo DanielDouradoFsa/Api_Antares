@@ -14,9 +14,9 @@ class PessoaSchema extends Schema {
         .onDelete('CASCADE');
 
       table.string('nome', 255).notNullable();
-      table.integer('cpf', 11).notNullable().unique();
+      table.bigInteger('cpf').notNullable().unique();
       table.string('email', 255).notNullable().unique();
-      table.integer('telefone').notNullable();
+      table.bigInteger('telefone').notNullable();
       table.timestamps();
     })
   }
